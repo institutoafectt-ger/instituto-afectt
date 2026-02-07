@@ -3,91 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instituto Afectt | Inscripciones Abiertas</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Instituto Afectt – Capacitación en Salud y Educación</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#f4f6f9;color:#222;}
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f4f6f9;
+  color:#222;
+}
+
+header{
+  background:#ffffff;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  border-bottom:4px solid #0b3d91;
+}
+
+header img{
+  height:60px;
+}
+
+header h1{
+  margin:0;
+  font-size:26px;
+  color:#0b3d91;
+}
+
 .hero{
-background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1920') center/cover;
-color:#fff;text-align:center;padding:120px 20px;}
-.hero h1{font-size:42px;font-weight:700;margin-bottom:15px;}
-.hero p{font-size:20px;margin-bottom:10px;}
-.price{font-size:22px;font-weight:600;margin-top:15px;}
-.btn{
-display:inline-block;margin-top:25px;
-background:#25D366;color:#fff;
-padding:18px 40px;text-decoration:none;
-font-weight:700;border-radius:8px;
-transition:.3s;}
-.btn:hover{background:#1ebe5d;}
-.section{padding:70px 20px;text-align:center;max-width:1000px;margin:auto;}
-.section h2{font-size:30px;margin-bottom:30px;}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;}
+  padding:40px 20px;
+  text-align:center;
+  background:linear-gradient(rgba(11,61,145,0.85),rgba(11,61,145,0.85)),
+  url("https://images.unsplash.com/photo-1523240795612-9a054b0db644") center/cover;
+  color:white;
+}
+
+.hero h2{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:18px;
+}
+
+.phone{
+  margin:30px auto;
+  text-align:center;
+  font-size:26px;
+  font-weight:bold;
+  color:#007f5f;
+}
+
+.courses{
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
 .card{
-background:#fff;padding:30px;border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);}
-.highlight{
-background:#1e3c72;color:#fff;padding:70px 20px;text-align:center;}
-footer{
-background:#111;color:#aaa;text-align:center;
-padding:25px;font-size:14px;}
-@media(max-width:768px){
-.hero h1{font-size:28px;}
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  margin-top:0;
+  color:#0b3d91;
+}
+
+.card .info{
+  font-size:14px;
+  margin:10px 0;
+}
+
+.card .ia{
+  margin:15px 0;
+  padding:10px;
+  background:#e9f5ff;
+  font-size:13px;
+  border-left:4px solid #0b3d91;
+}
+
+.card button{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  background:#007f5f;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.reserve{
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  background:#f2f8ff;
+  border-radius:6px;
+  font-size:14px;
+}
+
+.reserve strong{
+  font-size:16px;
 }
 </style>
+
+<script>
+function reservar(id){
+  const box = document.getElementById(id);
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+
 </head>
 <body>
 
+<header>
+  <img src="logo.png" alt="Instituto Afectt">
+  <h1>Instituto Afectt</h1>
+</header>
+
 <section class="hero">
-<h1>Capacitate este año y mejorá tus oportunidades laborales</h1>
-<p>Formación práctica y presencial en La Banda</p>
-<p>19 años formando para el empleo</p>
-<p class="price">Cuota mensual: $25.000 | Inscripción: $10.000</p>
-<p>Inicio 2 de Marzo – Vacantes Limitadas</p>
-<a class="btn" href="https://wa.me/5493854747981" target="_blank">
-QUIERO INFORMACIÓN POR WHATSAPP
-</a>
+  <h2>Capacitación en Salud y Educación</h2>
+  <p>19 años formando para el empleo</p>
 </section>
 
-<section class="section">
-<h2>¿Por qué elegir Instituto Afectt?</h2>
-<div class="features">
-<div class="card">
-<h3>Duración 10 Meses</h3>
-<p>1 clase semanal de 3 horas.</p>
+<div class="phone">
+  📞 3854747981
 </div>
-<div class="card">
-<h3>Docentes Especialistas</h3>
-<p>Profesionales con experiencia real.</p>
-</div>
-<div class="card">
-<h3>Modalidad Teórico-Práctica</h3>
-<p>Clases presenciales con apoyo virtual.</p>
-</div>
-<div class="card">
-<h3>Certificación Final</h3>
-<p>Respaldo institucional tras 19 años de trayectoria.</p>
-</div>
-</div>
-<a class="btn" href="https://wa.me/5493854747981" target="_blank">
-CONSULTAR VACANTES
-</a>
-</section>
 
-<section class="highlight">
-<h2>Cupos Reducidos</h2>
-<p>Grupos limitados para mejor aprendizaje.</p>
-<p>Barrio Santa Clara – La Banda</p>
-<a class="btn" href="https://wa.me/5493854747981" target="_blank">
-RESERVAR MI LUGAR
-</a>
-</section>
+<section class="courses">
 
-<footer>
-Instituto Afectt © 2026 | 3854747981
-</footer>
+  <div class="card">
+    <h3>Agente Sanitario</h3>
+    <p>Formación para prevención y promoción de la salud comunitaria.</p>
+    <div class="info">📅 Lunes | 🕒 18 a 21 hs</div>
+    <div class="ia">Herramientas digitales e IA aplicadas a la gestión sanitaria.</div>
+    <button onclick="reservar('r1')">Inscribirse</button>
+    <div class="reserve" id="r1">
+      <strong>Alias: AFECTT.IA</strong><br>
+      $10.000 para reservar<br>
+      <small>(enviar comprobante por wsp)</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Auxiliar en Farmacia</h3>
+    <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
+    <div class="info">📅 Martes | 🕒 18 a 21 hs</div>
+    <div class="ia">Uso de herramientas digitales e IA en gestión farmacéutica.</div>
+    <button onclick="reservar('r2')">Inscribirse</button>
+    <div class="reserve" id="r2">
+      <strong>Alias: AFECTT.IA</strong><br>
+      $10.000 para reservar<br>
+      <small>(enviar comprobante por wsp)</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Formación de Preceptores</h3>
+    <p>Preparación para el acompañamiento y la gestión educativa institucional.</p>
+    <div class="info">📅 Miércoles | 🕒 18 a 21 hs</div>
+    <div class="ia">Herramientas digitales e IA para gestión educativa.</div>
+    <button onclick="reservar('r3')">Inscribirse</button>
+    <div class="reserve" id="r3">
+      <strong>Alias: AFECTT.IA</strong><br>
+      $10.000 para reservar<br>
+      <small>(enviar comprobante por wsp)</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Acompañante Terapéutico</h3>
+    <p>Formación para el acompañamiento integral en contextos de salud y educación.</p>
+    <div class="info">📅 Jueves | 🕒 18 a 21 hs</div>
+    <div class="ia">Uso de herramientas digitales e IA en acompañamiento terapéutico.</div>
+    <button onclick="reservar('r4')">Inscribirse</button>
+    <div class="reserve" id="r4">
+      <strong>Alias: AFECTT.IA</strong><br>
+      $10.000 para reservar<br>
+      <small>(enviar comprobante por wsp)</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Emergencias Médicas</h3>
+    <p>Capacitación para la atención inicial en situaciones de urgencia y emergencias.</p>
+    <div class="info">📅 Viernes | 🕒 18 a 21 hs</div>
+    <div class="ia">Herramientas digitales e IA aplicadas a emergencias médicas.</div>
+    <button onclick="reservar('r5')">Inscribirse</button>
+    <div class="reserve" id="r5">
+      <strong>Alias: AFECTT.IA</strong><br>
+      $10.000 para reservar<br>
+      <small>(enviar comprobante por wsp)</small>
+    </div>
+  </div>
+
+</section>
 
 </body>
 </html>
