@@ -19,10 +19,16 @@
 body{
   margin:0;
   font-family:'Montserrat',sans-serif;
-  background:var(--gris);
   color:#1a1a1a;
-}
 
+  /* Fondo con imagen + degradé gris claro */
+  background:
+    linear-gradient(
+      rgba(245,247,250,0.92),
+      rgba(245,247,250,0.92)
+    ),
+    url("fachada.jpg") center/cover no-repeat fixed;
+}
 /* HEADER */
 header{
   background:#fff;
@@ -252,3 +258,4 @@ function reservar(id){
 
 </body>
 </html>
+
