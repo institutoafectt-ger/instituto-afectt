@@ -12,7 +12,6 @@
   --azul:#0b3d91;
   --verde:#0aa37f;
   --gris:#f4f6f9;
-  --gris2:#eef1f5;
   --rojo:#e53935;
 }
 
@@ -22,10 +21,8 @@ body{
   margin:0;
   font-family:'Montserrat',sans-serif;
   color:#1a1a1a;
-
-  /* Fondo con imagen + degradé */
   background:
-    linear-gradient(rgba(252,253,255,0.92), rgba(246,248,252,0.92)),
+    linear-gradient(rgba(252,253,255,0.92),rgba(246,248,252,0.92)),
     url("fachada.jpg") center/cover no-repeat fixed;
 }
 
@@ -88,7 +85,7 @@ header .phone{
   opacity:.95;
 }
 
-/* FRANJA PRECIO GENERAL */
+/* FRANJA PRECIO */
 .price-bar{
   background:var(--verde);
   color:#fff;
@@ -98,7 +95,7 @@ header .phone{
   font-weight:800;
 }
 
-/* SECCIÓN UBICACIÓN */
+/* UBICACIÓN */
 .location{
   background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(240,243,248,0.92));
   border-top:1px solid rgba(0,0,0,.06);
@@ -123,7 +120,7 @@ header .phone{
 }
 
 .facade{
-  width:144px; /* doble del logo aprox */
+  width:144px;
   height:144px;
   border-radius:50%;
   background:url("fachada.jpg") center/cover no-repeat;
@@ -143,9 +140,7 @@ header .phone{
   font-size:18px;
 }
 
-.loc-text{
-  font-weight:600;
-}
+.loc-text{ font-weight:600; }
 
 .loc-hours{
   font-size:14px;
@@ -163,7 +158,7 @@ header .phone{
   font-weight:800;
 }
 
-/* SECCIÓN CURSOS */
+/* SECCIÓN */
 .section{
   max-width:1200px;
   margin:54px auto;
@@ -173,9 +168,26 @@ header .phone{
 .section h2{
   font-size:34px;
   font-weight:800;
-  margin:0 0 34px;
+  margin:0 0 18px;
   color:var(--azul);
   text-align:center;
+}
+
+/* SELLOS (arriba de capacitaciones) */
+.badges{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:0 0 28px;
+}
+.badge{
+  color:var(--azul);
+  border:2px solid var(--verde);
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:800;
+  background:rgba(255,255,255,0.9);
 }
 
 /* TARJETAS */
@@ -228,6 +240,7 @@ header .phone{
   font-size:15px;
 }
 
+/* VER PROMO (botón) */
 .promo-badge{
   position:absolute;
   top:16px;
@@ -238,24 +251,26 @@ header .phone{
   font-weight:800;
   padding:6px 10px;
   border-radius:999px;
+  cursor:pointer;
+  user-select:none;
 }
 
-.promo-text{
-  margin-top:10px;
-  color:var(--rojo);
-  font-weight:800;
+/* Bloque promo oculto */
+.promo-box{
+  display:none;
+  margin:12px auto 0;
+  padding:12px 14px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid rgba(11,61,145,.15);
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+  text-align:center;
   font-size:13px;
-  line-height:1.25;
+  font-weight:700;
+  max-width:92%;
 }
 
-.valid-until{
-  margin-top:6px;
-  color:var(--rojo);
-  font-weight:800;
-  font-size:13px;
-}
-
-.card button{
+button{
   margin-top:16px;
   width:100%;
   padding:14px;
@@ -279,21 +294,8 @@ header .phone{
 }
 
 .reserve strong{ font-size:16px; }
+.reserve small{ display:block; margin-top:6px; opacity:.85; }
 
-.reserve small{
-  display:block;
-  margin-top:6px;
-  opacity:.85;
-}
-
-.reserve .mini{
-  margin-top:10px;
-  font-weight:700;
-  font-size:13px;
-  opacity:.95;
-}
-
-/* FOOTER */
 footer{
   background:var(--azul);
   color:#fff;
@@ -303,7 +305,7 @@ footer{
   font-size:14px;
 }
 
-/* WHATSAPP FLOTANTE */
+/* WhatsApp flotante */
 .whatsapp-float{
   position:fixed;
   right:18px;
@@ -321,7 +323,6 @@ footer{
   box-shadow:0 12px 26px rgba(0,0,0,.22);
   z-index:9999;
 }
-
 .whatsapp-float:hover{ transform:translateY(-2px); }
 
 /* RESPONSIVE */
@@ -342,6 +343,10 @@ function reservar(id){
   const el = document.getElementById(id);
   el.style.display = (el.style.display === "block") ? "none" : "block";
 }
+function togglePromo(id){
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === "block") ? "none" : "block";
+}
 </script>
 </head>
 
@@ -352,7 +357,6 @@ function reservar(id){
     <img src="logo.png" alt="Instituto Afectt">
     <div class="brand-title">Instituto Afectt</div>
   </div>
-
   <div class="phone">📞 3854747981</div>
 </header>
 
@@ -383,18 +387,25 @@ function reservar(id){
 <section class="section">
   <h2>Nuestras capacitaciones</h2>
 
+  <div class="badges">
+    <div class="badge">Certificacion Universitaria</div>
+    <div class="badge">Docentes Especializados</div>
+  </div>
+
   <div class="courses">
 
-    <!-- 1 -->
+    <!-- Agente Sanitario -->
     <div class="card">
-      <div class="promo-badge">PROMO</div>
+      <div class="promo-badge" onclick="togglePromo('p1')">VER PROMO</div>
       <h3>Agente Sanitario</h3>
       <p>Formación para prevención y promoción de la salud comunitaria.</p>
-
       <div class="info">📅 Lunes | 🕒 18 a 21 hs</div>
       <div class="price">Cuota mensual: $25.000</div>
-      <div class="promo-text">Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!</div>
-      <div class="valid-until">Válida hasta el 20 de Febrero</div>
+
+      <div class="promo-box" id="p1">
+        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
+        Válida hasta el 20 de Febrero
+      </div>
 
       <div class="ia">
         Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
@@ -407,20 +418,22 @@ function reservar(id){
         Titular: German Terrera<br><br>
         <strong>$10.000</strong> para reservar
         <small>(enviar comprobante por wsp)</small>
-        <div class="mini">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
       </div>
     </div>
 
-    <!-- 2 -->
+    <!-- Auxiliar en Farmacia -->
     <div class="card">
-      <div class="promo-badge">PROMO</div>
+      <div class="promo-badge" onclick="togglePromo('p2')">VER PROMO</div>
       <h3>Auxiliar en Farmacia</h3>
       <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
-
       <div class="info">📅 Martes | 🕒 18 a 21 hs</div>
       <div class="price">Cuota mensual: $25.000</div>
-      <div class="promo-text">Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!</div>
-      <div class="valid-until">Válida hasta el 20 de Febrero</div>
+
+      <div class="promo-box" id="p2">
+        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
+        Válida hasta el 20 de Febrero
+      </div>
 
       <div class="ia">
         Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
@@ -433,20 +446,22 @@ function reservar(id){
         Titular: German Terrera<br><br>
         <strong>$10.000</strong> para reservar
         <small>(enviar comprobante por wsp)</small>
-        <div class="mini">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
       </div>
     </div>
 
-    <!-- 3 -->
+    <!-- Formación de Preceptores -->
     <div class="card">
-      <div class="promo-badge">PROMO</div>
+      <div class="promo-badge" onclick="togglePromo('p3')">VER PROMO</div>
       <h3>Formación de Preceptores</h3>
       <p>Preparación para el acompañamiento y la gestión educativa institucional.</p>
-
       <div class="info">📅 Miércoles | 🕒 18 a 21 hs</div>
       <div class="price">Cuota mensual: $25.000</div>
-      <div class="promo-text">Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!</div>
-      <div class="valid-until">Válida hasta el 20 de Febrero</div>
+
+      <div class="promo-box" id="p3">
+        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
+        Válida hasta el 20 de Febrero
+      </div>
 
       <div class="ia">
         Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
@@ -459,20 +474,22 @@ function reservar(id){
         Titular: German Terrera<br><br>
         <strong>$10.000</strong> para reservar
         <small>(enviar comprobante por wsp)</small>
-        <div class="mini">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
       </div>
     </div>
 
-    <!-- 4 -->
+    <!-- Acompañante Terapéutico -->
     <div class="card">
-      <div class="promo-badge">PROMO</div>
+      <div class="promo-badge" onclick="togglePromo('p4')">VER PROMO</div>
       <h3>Acompañante Terapéutico</h3>
       <p>Formación para el acompañamiento integral en contextos de salud y educación.</p>
-
       <div class="info">📅 Jueves | 🕒 18 a 21 hs</div>
       <div class="price">Cuota mensual: $25.000</div>
-      <div class="promo-text">Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!</div>
-      <div class="valid-until">Válida hasta el 20 de Febrero</div>
+
+      <div class="promo-box" id="p4">
+        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
+        Válida hasta el 20 de Febrero
+      </div>
 
       <div class="ia">
         Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
@@ -485,20 +502,22 @@ function reservar(id){
         Titular: German Terrera<br><br>
         <strong>$10.000</strong> para reservar
         <small>(enviar comprobante por wsp)</small>
-        <div class="mini">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
       </div>
     </div>
 
-    <!-- 5 -->
+    <!-- Emergencias Médicas -->
     <div class="card">
-      <div class="promo-badge">PROMO</div>
+      <div class="promo-badge" onclick="togglePromo('p5')">VER PROMO</div>
       <h3>Emergencias Médicas</h3>
       <p>Capacitación para la atención inicial en situaciones de urgencia y emergencias.</p>
-
       <div class="info">📅 Viernes | 🕒 18 a 21 hs</div>
       <div class="price">Cuota mensual: $25.000</div>
-      <div class="promo-text">Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!</div>
-      <div class="valid-until">Válida hasta el 20 de Febrero</div>
+
+      <div class="promo-box" id="p5">
+        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
+        Válida hasta el 20 de Febrero
+      </div>
 
       <div class="ia">
         Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
@@ -511,23 +530,40 @@ function reservar(id){
         Titular: German Terrera<br><br>
         <strong>$10.000</strong> para reservar
         <small>(enviar comprobante por wsp)</small>
-        <div class="mini">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
       </div>
     </div>
 
-    <!-- MODALIDAD VIRTUAL (tarjeta aparte, sin precio) -->
+    <!-- Modalidad Virtual (actualizada) -->
     <div class="card">
+      <div class="promo-badge" onclick="togglePromo('pv')">VER PROMO</div>
       <h3>Modalidad Virtual</h3>
-      <p>Consultá planes disponibles.</p>
+      <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
+
+      <div class="promo-box" id="pv">
+        <strong>$20.000</strong><br>
+        Sin gastos de inscripción<br>
+        Sin gastos de certificacion<br>
+        Material incluido<br>
+        Sin horarios fijos<br>
+        Válido hasta el 31 de Marzo
+      </div>
+
       <div class="ia">
-        Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.
+        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
         <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
       </div>
-      <button onclick="window.open('https://wa.me/5493854747981','_blank')">Consultar por WhatsApp</button>
-      <div class="info">📞 3854747981</div>
+
+      <button onclick="reservar('rv')">Inscribirse · Cuota Marzo: $25.000</button>
+      <div class="reserve" id="rv">
+        <strong>Alias: AFECTT.IA</strong><br>
+        Titular: German Terrera<br><br>
+        <strong>$10.000</strong> para reservar
+        <small>(enviar comprobante por wsp)</small>
+      </div>
     </div>
 
-    <!-- PRÓXIMAMENTE (todos los otros cursos en una sola tarjeta) -->
+    <!-- Próximamente -->
     <div class="card">
       <h3>Próximamente</h3>
       <p>Nuevas capacitaciones en etapa de programación.</p>
