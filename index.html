@@ -174,7 +174,7 @@ header .phone{
   text-align:center;
 }
 
-/* SELLOS (arriba de capacitaciones) */
+/* SELLOS */
 .badges{
   display:flex;
   justify-content:center;
@@ -196,6 +196,7 @@ header .phone{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
+  align-items:stretch; /* ayuda a que las tarjetas de una fila tiendan a igualar altura */
 }
 
 .card{
@@ -204,6 +205,7 @@ header .phone{
   padding:30px;
   box-shadow:0 14px 34px rgba(0,0,0,.10);
   position:relative;
+  height:100%;
 }
 
 .card h3{
@@ -267,9 +269,9 @@ header .phone{
 
 .promo-price{
   display:block;
-  font-size:28px;          /* más grande */
+  font-size:28px;
   font-weight:900;
-  color:var(--verde);      /* otro color */
+  color:var(--verde);
   line-height:1.05;
   margin-bottom:6px;
 }
@@ -314,12 +316,18 @@ header .phone{
   opacity:.85;
 }
 
-/* PRÓXIMAMENTE (presentación comercial, 3 columnas) */
+/* PRÓXIMAMENTE full width */
+.card-wide{
+  grid-column: 1 / -1;     /* ancho completo de la sección */
+}
+
+/* PRÓXIMAMENTE (3 columnas, items iguales) */
 .future-grid{
   margin-top:14px;
   display:grid;
   grid-template-columns:repeat(3, minmax(0,1fr));
   gap:14px;
+  align-items:stretch;
 }
 
 .future-item{
@@ -327,6 +335,10 @@ header .phone{
   border:1px solid rgba(11,61,145,.10);
   border-radius:14px;
   padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:110px; /* todos del mismo tamaño visual */
 }
 
 .future-name{
@@ -334,10 +346,11 @@ header .phone{
   color:var(--azul);
   font-size:14px;
   line-height:1.25;
+  min-height:36px; /* alinea títulos aunque uno ocupe 2 líneas */
 }
 
 .future-meta{
-  margin-top:8px;
+  margin-top:10px;
   display:flex;
   gap:8px;
   flex-wrap:wrap;
@@ -621,9 +634,7 @@ function togglePromo(id){
       <h3>Modalidad Virtual</h3>
       <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
 
-      <div class="price" style="opacity:.0; height:0; margin:0; padding:0;"></div>
-
-      <div style="text-align:center; margin-top:10px">
+      <div style="text-align:center; margin-top:12px">
         <div class="promo-trigger" onclick="togglePromo('pv')">VER PROMO</div>
       </div>
 
@@ -650,8 +661,8 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Próximamente -->
-    <div class="card">
+    <!-- Próximamente (ancho completo) -->
+    <div class="card card-wide">
       <h3>Próximamente</h3>
       <p>Nuevas capacitaciones en etapa de programación.</p>
 
