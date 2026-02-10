@@ -12,6 +12,7 @@
   --azul:#0b3d91;
   --verde:#0aa37f;
   --gris:#f4f6f9;
+  --gris2:#eef1f5;
   --rojo:#e53935;
 }
 
@@ -158,7 +159,7 @@ header .phone{
   font-weight:800;
 }
 
-/* SECCIÓN */
+/* SECCIONES */
 .section{
   max-width:1200px;
   margin:54px auto;
@@ -187,7 +188,7 @@ header .phone{
   padding:10px 14px;
   border-radius:999px;
   font-weight:800;
-  background:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.92);
 }
 
 /* TARJETAS */
@@ -224,15 +225,6 @@ header .phone{
   opacity:.95;
 }
 
-.ia{
-  background:#eef6ff;
-  border-left:4px solid var(--azul);
-  padding:12px;
-  font-size:13px;
-  margin:14px 0 0;
-  border-radius:10px;
-}
-
 .price{
   margin-top:12px;
   font-weight:800;
@@ -240,22 +232,25 @@ header .phone{
   font-size:15px;
 }
 
-/* VER PROMO (botón) */
-.promo-badge{
-  position:absolute;
-  top:16px;
-  right:16px;
+/* VER PROMO (centrado debajo del precio) */
+.promo-trigger{
+  margin:12px auto 0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   background:var(--rojo);
   color:#fff;
+  font-weight:900;
   font-size:12px;
-  font-weight:800;
-  padding:6px 10px;
+  letter-spacing:.2px;
+  padding:8px 12px;
   border-radius:999px;
   cursor:pointer;
   user-select:none;
+  width:max-content;
 }
 
-/* Bloque promo oculto */
+/* Bloque promo oculto (centrado) */
 .promo-box{
   display:none;
   margin:12px auto 0;
@@ -270,7 +265,25 @@ header .phone{
   max-width:92%;
 }
 
-button{
+.promo-price{
+  display:block;
+  font-size:28px;          /* más grande */
+  font-weight:900;
+  color:var(--verde);      /* otro color */
+  line-height:1.05;
+  margin-bottom:6px;
+}
+
+.ia{
+  background:#eef6ff;
+  border-left:4px solid var(--azul);
+  padding:12px;
+  font-size:13px;
+  margin:14px 0 0;
+  border-radius:10px;
+}
+
+.card button{
   margin-top:16px;
   width:100%;
   padding:14px;
@@ -294,8 +307,56 @@ button{
 }
 
 .reserve strong{ font-size:16px; }
-.reserve small{ display:block; margin-top:6px; opacity:.85; }
 
+.reserve small{
+  display:block;
+  margin-top:6px;
+  opacity:.85;
+}
+
+/* PRÓXIMAMENTE (presentación comercial, 3 columnas) */
+.future-grid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+}
+
+.future-item{
+  background:rgba(244,246,249,0.75);
+  border:1px solid rgba(11,61,145,.10);
+  border-radius:14px;
+  padding:12px;
+}
+
+.future-name{
+  font-weight:900;
+  color:var(--azul);
+  font-size:14px;
+  line-height:1.25;
+}
+
+.future-meta{
+  margin-top:8px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  font-size:12px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(11,61,145,.12);
+}
+
+.tag.vir{
+  border-color:rgba(10,163,127,.35);
+}
+
+/* FOOTER */
 footer{
   background:var(--azul);
   color:#fff;
@@ -326,6 +387,9 @@ footer{
 .whatsapp-float:hover{ transform:translateY(-2px); }
 
 /* RESPONSIVE */
+@media(max-width:980px){
+  .future-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
 @media(max-width:768px){
   header{padding:14px 16px}
   header img{height:64px}
@@ -335,6 +399,9 @@ footer{
   .section{padding:0 16px}
   .location .wrap{padding:18px 16px}
   .facade{width:120px;height:120px}
+}
+@media(max-width:520px){
+  .future-grid{ grid-template-columns:1fr; }
 }
 </style>
 
@@ -394,14 +461,17 @@ function togglePromo(id){
 
   <div class="courses">
 
-    <!-- Agente Sanitario -->
+    <!-- 1 -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('p1')">VER PROMO</div>
       <h3>Agente Sanitario</h3>
       <p>Formación para prevención y promoción de la salud comunitaria.</p>
       <div class="info">📅 Lunes | 🕒 18 a 21 hs</div>
+
       <div class="price">Cuota mensual: $25.000</div>
 
+      <div style="text-align:center">
+        <div class="promo-trigger" onclick="togglePromo('p1')">VER PROMO</div>
+      </div>
       <div class="promo-box" id="p1">
         Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
         Válida hasta el 20 de Febrero
@@ -422,14 +492,17 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Auxiliar en Farmacia -->
+    <!-- 2 -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('p2')">VER PROMO</div>
       <h3>Auxiliar en Farmacia</h3>
       <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
       <div class="info">📅 Martes | 🕒 18 a 21 hs</div>
+
       <div class="price">Cuota mensual: $25.000</div>
 
+      <div style="text-align:center">
+        <div class="promo-trigger" onclick="togglePromo('p2')">VER PROMO</div>
+      </div>
       <div class="promo-box" id="p2">
         Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
         Válida hasta el 20 de Febrero
@@ -450,14 +523,17 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Formación de Preceptores -->
+    <!-- 3 -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('p3')">VER PROMO</div>
       <h3>Formación de Preceptores</h3>
       <p>Preparación para el acompañamiento y la gestión educativa institucional.</p>
       <div class="info">📅 Miércoles | 🕒 18 a 21 hs</div>
+
       <div class="price">Cuota mensual: $25.000</div>
 
+      <div style="text-align:center">
+        <div class="promo-trigger" onclick="togglePromo('p3')">VER PROMO</div>
+      </div>
       <div class="promo-box" id="p3">
         Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
         Válida hasta el 20 de Febrero
@@ -478,14 +554,17 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Acompañante Terapéutico -->
+    <!-- 4 -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('p4')">VER PROMO</div>
       <h3>Acompañante Terapéutico</h3>
       <p>Formación para el acompañamiento integral en contextos de salud y educación.</p>
       <div class="info">📅 Jueves | 🕒 18 a 21 hs</div>
+
       <div class="price">Cuota mensual: $25.000</div>
 
+      <div style="text-align:center">
+        <div class="promo-trigger" onclick="togglePromo('p4')">VER PROMO</div>
+      </div>
       <div class="promo-box" id="p4">
         Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
         Válida hasta el 20 de Febrero
@@ -506,14 +585,17 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Emergencias Médicas -->
+    <!-- 5 -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('p5')">VER PROMO</div>
       <h3>Emergencias Médicas</h3>
       <p>Capacitación para la atención inicial en situaciones de urgencia y emergencias.</p>
       <div class="info">📅 Viernes | 🕒 18 a 21 hs</div>
+
       <div class="price">Cuota mensual: $25.000</div>
 
+      <div style="text-align:center">
+        <div class="promo-trigger" onclick="togglePromo('p5')">VER PROMO</div>
+      </div>
       <div class="promo-box" id="p5">
         Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
         Válida hasta el 20 de Febrero
@@ -534,14 +616,19 @@ function togglePromo(id){
       </div>
     </div>
 
-    <!-- Modalidad Virtual (actualizada) -->
+    <!-- Modalidad Virtual -->
     <div class="card">
-      <div class="promo-badge" onclick="togglePromo('pv')">VER PROMO</div>
       <h3>Modalidad Virtual</h3>
       <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
 
+      <div class="price" style="opacity:.0; height:0; margin:0; padding:0;"></div>
+
+      <div style="text-align:center; margin-top:10px">
+        <div class="promo-trigger" onclick="togglePromo('pv')">VER PROMO</div>
+      </div>
+
       <div class="promo-box" id="pv">
-        <strong>$20.000</strong><br>
+        <span class="promo-price">$20.000</span>
         Sin gastos de inscripción<br>
         Sin gastos de certificacion<br>
         Material incluido<br>
@@ -550,7 +637,7 @@ function togglePromo(id){
       </div>
 
       <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
+        Modalidad virtual con acompañamiento y seguimiento académico durante todo el trayecto formativo.
         <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
       </div>
 
@@ -567,21 +654,77 @@ function togglePromo(id){
     <div class="card">
       <h3>Próximamente</h3>
       <p>Nuevas capacitaciones en etapa de programación.</p>
-      <div class="info">
-        <ul style="padding-left:18px; margin:10px 0; line-height:1.6;">
-          <li>Peinados Profesionales</li>
-          <li>Belleza Profesional</li>
-          <li>Higiene y Seguridad Escolar</li>
-          <li>Asistente de Gym</li>
-          <li>Alimentación Familiar</li>
-          <li>Manipulación de Alimentos</li>
-          <li>Mente Ágil (lectura veloz, memoria, técnicas de estudio y oratoria)</li>
-          <li>Office Pro (Drive aplicado a distintas áreas)</li>
-          <li>Negocios Digitales</li>
-          <li>Inteligencia Artificial Aplicada</li>
-        </ul>
+
+      <div class="future-grid">
+        <div class="future-item">
+          <div class="future-name">Peinados Profesionales</div>
+          <div class="future-meta">
+            <span class="tag">6 meses</span>
+            <span class="tag">Presencial</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Belleza Profesional</div>
+          <div class="future-meta">
+            <span class="tag">6 meses</span>
+            <span class="tag">Presencial</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Higiene y Seguridad Escolar</div>
+          <div class="future-meta">
+            <span class="tag">4 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Asistente de Gym</div>
+          <div class="future-meta">
+            <span class="tag">4 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Alimentación Familiar</div>
+          <div class="future-meta">
+            <span class="tag">4 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Mente Ágil</div>
+          <div class="future-meta">
+            <span class="tag">6 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Office Pro</div>
+          <div class="future-meta">
+            <span class="tag">6 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
+
+        <div class="future-item">
+          <div class="future-name">Negocios Digitales</div>
+          <div class="future-meta">
+            <span class="tag">8 meses</span>
+            <span class="tag vir">Presencial + Virtual</span>
+          </div>
+        </div>
       </div>
-      <div class="ia">Días, horarios y duración a definir. Cursos cortos y/o por bloques según capacitación.</div>
+
+      <div class="ia" style="margin-top:16px">
+        Días, horarios y duración a definir. Cursos cortos y/o por bloques según capacitación.
+      </div>
+
       <button onclick="window.open('https://wa.me/5493854747981','_blank')">Consultar por WhatsApp</button>
     </div>
 
