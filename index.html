@@ -99,6 +99,22 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
 .loc-title{font-weight:800;color:var(--azul);font-size:18px;}
 .loc-text{font-weight:600;}
 .loc-hours{font-size:14px;font-weight:600;opacity:.9;}
+
+.visits{
+  margin-top:6px;
+  font-size:13px;
+  font-weight:800;
+  color:var(--azul);
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  width:max-content;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#fff;
+  border:2px solid var(--verde);
+}
+
 .map-btn{
   display:inline-block;
   background:var(--azul);
@@ -151,10 +167,10 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
 .info{margin:14px 0 0;font-weight:700;font-size:14px;opacity:.95;}
 .price{margin-top:12px;font-weight:800;color:#111;font-size:15px;}
 
-/* IMAGEN CURSO: A PRUEBA DE BALAS (siempre visible) */
+/* IMAGEN CURSO */
 .course-img{
   width:100%;
-  height:190px;                 /* altura fija real */
+  height:190px;
   border-radius:14px;
   margin:12px 0 14px;
   object-fit:cover;
@@ -258,13 +274,22 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  min-height:150px;
+  min-height:180px;
+}
+.future-img{
+  width:100%;
+  height:92px;
+  border-radius:12px;
+  background:#e9eef8 center/cover no-repeat;
+  border:1px solid rgba(11,61,145,.10);
+  margin-bottom:10px;
 }
 .future-name{
   font-weight:900;
   color:var(--azul);
   font-size:14px;
   line-height:1.25;
+  min-height:36px;
 }
 .future-meta{
   margin-top:10px;
@@ -342,6 +367,32 @@ function togglePromo(id){
   const el = document.getElementById(id);
   el.style.display = (el.style.display === "block") ? "none" : "block";
 }
+
+/* CONTADOR SIMPLE (localStorage) */
+(function(){
+  const BASE = 5000;
+  const KEY = "afectt_visits";
+  const SESSION_KEY = "afectt_counted_this_session";
+
+  let visits = parseInt(localStorage.getItem(KEY), 10);
+  if (Number.isNaN(visits) || visits < BASE) visits = BASE;
+
+  // Evita sumar múltiples veces por refrescos en la misma sesión/pestaña
+  if (!sessionStorage.getItem(SESSION_KEY)) {
+    visits += 1;
+    localStorage.setItem(KEY, String(visits));
+    sessionStorage.setItem(SESSION_KEY, "1");
+  }
+
+  function formatAR(n){
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const el = document.getElementById("visitCounter");
+    if (el) el.textContent = formatAR(visits);
+  });
+})();
 </script>
 </head>
 
@@ -369,6 +420,10 @@ function togglePromo(id){
       <div class="loc-texts">
         <div class="loc-title">Dirección</div>
         <div class="loc-text">Av San Pablo 550, Barrio Santa Clara, La Banda</div>
+
+        <!-- CONTADOR (debajo de Dirección) -->
+        <div class="visits">👁️ Visitas: <span id="visitCounter">5.000</span></div>
+
         <div class="loc-hours">Horario de atención: 9 a 11 hs y 18 a 20 hs</div>
       </div>
     </div>
@@ -589,38 +644,55 @@ function togglePromo(id){
       <p>Nuevas capacitaciones en etapa de programación.</p>
 
       <div class="future-grid">
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/peinados.png')"></div>
           <div class="future-name">Peinados Profesionales</div>
           <div class="future-meta"><span class="tag">6 meses</span><span class="tag">Presencial</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/belleza.png')"></div>
           <div class="future-name">Belleza Profesional</div>
           <div class="future-meta"><span class="tag">6 meses</span><span class="tag">Presencial</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/higiene.png')"></div>
           <div class="future-name">Higiene y Seguridad Escolar</div>
           <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/gym.png')"></div>
           <div class="future-name">Asistente de Gym</div>
           <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/alimentacion.png')"></div>
           <div class="future-name">Alimentación Familiar</div>
           <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/mente.png')"></div>
           <div class="future-name">Mente Ágil</div>
           <div class="future-meta"><span class="tag">6 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/office.png')"></div>
           <div class="future-name">Office Pro</div>
           <div class="future-meta"><span class="tag">6 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
         <div class="future-item">
+          <div class="future-img" style="background-image:url('img/cursos/negocios.png')"></div>
           <div class="future-name">Negocios Digitales</div>
           <div class="future-meta"><span class="tag">8 meses</span><span class="tag vir">Presencial + Virtual</span></div>
         </div>
+
       </div>
 
       <div class="ia" style="margin-top:16px">
