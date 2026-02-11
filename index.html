@@ -11,7 +11,9 @@
 :root{
   --azul:#0b3d91;
   --verde:#0aa37f;
+  --gris:#f4f6f9;
   --rojo:#e53935;
+  --azulBar:#0b3d91;
 }
 
 *{box-sizing:border-box}
@@ -34,10 +36,37 @@ header{
   justify-content:space-between;
   box-shadow:0 2px 12px rgba(0,0,0,.08);
 }
-.brand{display:flex;align-items:center;gap:14px;}
-header img{height:72px;}
-.brand-title{font-weight:800;color:var(--azul);font-size:22px;line-height:1;}
-header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;align-items:center;gap:10px;}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+header img{
+  height:144px; /* DOBLE */
+}
+
+.brand-title{
+  font-weight:800;
+  color:var(--azul);
+  font-size:22px;
+  line-height:1;
+}
+
+header .phone{
+  font-weight:800;
+  font-size:24px;
+  color:var(--verde);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+header .phone a{
+  color:inherit;
+  text-decoration:none;
+}
 
 /* HERO */
 .hero{
@@ -45,9 +74,10 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
     linear-gradient(rgba(11,61,145,.88),rgba(11,61,145,.88)),
     url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1920") center/cover;
   color:#fff;
-  padding:88px 40px;
+  padding:74px 40px;
   text-align:center;
 }
+
 .hero h1{
   font-size:46px;
   font-weight:800;
@@ -55,6 +85,7 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   max-width:980px;
   line-height:1.15;
 }
+
 .hero p{
   font-size:18px;
   margin:16px auto 0;
@@ -62,57 +93,108 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   opacity:.95;
 }
 
+/* SELLOS */
+.seals{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.seal{
+  background:rgba(255,255,255,.18);
+  border:2px solid var(--verde);
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:800;
+  letter-spacing:.2px;
+  color:#cfe1ff;
+  /* “azul con bordes verdes” (simulación de borde) */
+  text-shadow:
+    -1px -1px 0 var(--verde),
+     1px -1px 0 var(--verde),
+    -1px  1px 0 var(--verde),
+     1px  1px 0 var(--verde);
+}
+
 /* FRANJA PRECIO */
 .price-bar{
   background:var(--verde);
   color:#fff;
   text-align:center;
-  padding:16px 18px;
   font-size:20px;
   font-weight:800;
+  padding:16px;
+}
+
+/* FRANJA INSCRIPCIÓN (AZUL) */
+.insc-bar{
+  background:var(--azulBar);
+  color:#fff;
+  text-align:center;
+  font-size:20px;
+  font-weight:800;
+  padding:16px;
 }
 
 /* UBICACIÓN */
 .location{
-  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(240,243,248,0.92));
+  background:#fff;
   border-top:1px solid rgba(0,0,0,.06);
   border-bottom:1px solid rgba(0,0,0,.06);
 }
+
 .location .wrap{
   max-width:1200px;
   margin:0 auto;
   padding:26px 30px;
   display:flex;
-  gap:18px;
+  gap:22px;
   align-items:center;
   justify-content:space-between;
   flex-wrap:wrap;
 }
-.loc-left{display:flex;align-items:center;gap:16px;}
-.facade{
-  width:144px;height:144px;border-radius:50%;
-  background:url("fachada.jpg") center/cover no-repeat;
-  box-shadow:0 10px 22px rgba(0,0,0,.20);
-  flex:0 0 auto;
-}
-.loc-texts{display:flex;flex-direction:column;gap:6px;}
-.loc-title{font-weight:800;color:var(--azul);font-size:18px;}
-.loc-text{font-weight:600;}
-.loc-hours{font-size:14px;font-weight:600;opacity:.9;}
 
-.visits{
-  margin-top:6px;
-  font-size:13px;
+.loc-left{
+  display:flex;
+  gap:22px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.facade-btn{
+  width:144px;
+  height:144px;
+  border-radius:50%;
+  background:url("fachada.jpg") center/cover no-repeat;
+  flex-shrink:0;
+  box-shadow:0 8px 18px rgba(0,0,0,.2);
+  border:3px solid rgba(255,255,255,.9);
+  display:inline-block;
+}
+
+.loc-title{
   font-weight:800;
   color:var(--azul);
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  width:max-content;
-  padding:7px 10px;
-  border-radius:999px;
-  background:#fff;
-  border:2px solid var(--verde);
+  font-size:16px;
+}
+
+.loc-text{
+  font-weight:700;
+}
+
+.loc-hours{
+  font-size:14px;
+  font-weight:600;
+  opacity:.9;
+}
+
+.loc-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
 }
 
 .map-btn{
@@ -125,22 +207,31 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   font-weight:800;
 }
 
-/* SECCIÓN */
-.section{max-width:1200px;margin:54px auto;padding:0 30px;}
-.section h2{font-size:34px;font-weight:800;margin:0 0 18px;color:var(--azul);text-align:center;}
-
-/* SELLOS */
-.badges{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:0 0 28px;}
-.badge{
-  color:var(--azul);
-  border:2px solid var(--verde);
-  padding:10px 14px;
-  border-radius:999px;
+.counter{
   font-weight:800;
-  background:rgba(255,255,255,0.92);
+  color:var(--azul);
+  background:rgba(11,61,145,.08);
+  border:1px solid rgba(11,61,145,.18);
+  padding:10px 12px;
+  border-radius:12px;
 }
 
-/* GRID TARJETAS */
+/* SECCIONES */
+.section{
+  max-width:1200px;
+  margin:54px auto;
+  padding:0 30px;
+}
+
+.section h2{
+  font-size:34px;
+  font-weight:800;
+  margin-bottom:28px;
+  color:var(--azul);
+  text-align:center;
+}
+
+/* CURSOS */
 .courses{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -151,87 +242,111 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
 .card{
   background:#fff;
   border-radius:16px;
-  padding:30px;
-  box-shadow:0 14px 34px rgba(0,0,0,.10);
+  padding:22px;
+  box-shadow:0 14px 34px rgba(0,0,0,.1);
   position:relative;
-  height:100%;
   transition:transform .18s ease, box-shadow .18s ease;
-}
-.card:hover{
-  transform:scale(1.02);
-  box-shadow:0 18px 42px rgba(0,0,0,.14);
+  overflow:hidden;
+  min-height:520px;
 }
 
-.card h3{font-size:22px;margin:0 0 10px;color:var(--azul);}
-.card p{font-size:15px;line-height:1.55;margin:0;}
-.info{margin:14px 0 0;font-weight:700;font-size:14px;opacity:.95;}
-.price{margin-top:12px;font-weight:800;color:#111;font-size:15px;}
+.card:hover{
+  transform:scale(1.02);
+  box-shadow:0 18px 44px rgba(0,0,0,.14);
+}
+
+.card h3{
+  font-size:22px;
+  color:var(--azul);
+  margin:0 0 10px;
+}
+
+.card p{
+  margin:0;
+  font-size:14.5px;
+  line-height:1.55;
+}
 
 /* IMAGEN CURSO */
 .course-img{
   width:100%;
-  height:190px;
-  border-radius:14px;
-  margin:12px 0 14px;
-  object-fit:cover;
-  display:block;
-  background:#f2f5fb;
-  border:1px solid rgba(11,61,145,.10);
+  height:160px;
+  border-radius:12px;
+  overflow:hidden;
+  margin:10px 0 12px;
+  background:#e9eef6;
+  border:1px solid rgba(0,0,0,.06);
 }
 
-/* VER PROMO */
-.promo-trigger{
-  margin:12px auto 0;
-  display:inline-flex;
-  align-items:center;
+.course-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* MISMO TAMAÑO VISUAL */
+  display:block;
+}
+
+/* PROMO (BOTÓN CENTRADO) */
+.promo-wrap{
+  margin-top:12px;
+  display:flex;
   justify-content:center;
+}
+
+.promo-btn{
+  border:none;
   background:var(--rojo);
   color:#fff;
-  font-weight:900;
   font-size:12px;
-  letter-spacing:.2px;
-  padding:8px 12px;
+  font-weight:900;
+  padding:8px 14px;
   border-radius:999px;
   cursor:pointer;
-  user-select:none;
-  width:max-content;
 }
 
-/* PROMO (desplegable) */
-.promo-box{
+.promo-panel{
   display:none;
-  margin:12px auto 0;
-  padding:12px 14px;
-  border-radius:12px;
-  background:#fff;
-  border:1px solid rgba(11,61,145,.15);
-  box-shadow:0 10px 22px rgba(0,0,0,.08);
+  margin-top:12px;
+  background:#fff6f6;
+  border:1px solid rgba(229,57,53,.25);
+  border-radius:14px;
+  padding:14px;
   text-align:center;
-  font-size:13px;
-  font-weight:700;
-  max-width:92%;
 }
-.promo-price{
-  display:block;
-  font-size:30px;
+
+.promo-panel .promo-price{
+  font-size:26px;            /* más grande */
   font-weight:900;
-  color:var(--verde);
-  line-height:1.05;
+  color:var(--verde);         /* otro color */
   margin-bottom:6px;
 }
 
-/* BLOQUE AZUL */
+.promo-panel .promo-lines{
+  font-weight:800;
+  line-height:1.35;
+}
+
+.price{
+  font-weight:900;
+  margin:10px 0 0;
+  font-size:15px;
+}
+
+.info{
+  font-size:14px;
+  font-weight:800;
+  margin-top:10px;
+}
+
 .ia{
   background:#eef6ff;
   border-left:4px solid var(--azul);
   padding:12px;
   font-size:13px;
-  margin:14px 0 0;
+  margin-top:14px;
   border-radius:10px;
 }
 
-/* BOTÓN + RESERVA */
-.card button{
+.btn{
   margin-top:16px;
   width:100%;
   padding:14px;
@@ -239,10 +354,11 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   background:var(--verde);
   color:#fff;
   font-size:16px;
-  font-weight:800;
+  font-weight:900;
   border-radius:10px;
   cursor:pointer;
 }
+
 .reserve{
   display:none;
   margin-top:14px;
@@ -251,61 +367,95 @@ header .phone{font-weight:800;font-size:24px;color:var(--verde);display:flex;ali
   border-radius:12px;
   font-size:14px;
   border:1px solid rgba(11,61,145,.12);
+  text-align:left;
 }
-.reserve strong{font-size:16px;}
-.reserve small{display:block;margin-top:6px;opacity:.85;}
 
-/* PRÓXIMAMENTE ancho completo */
-.card-wide{grid-column:1 / -1;}
+/* CARD MODALIDAD VIRTUAL */
+.card.virtual{
+  background:rgba(10,163,127,.12); /* verde pastel suave */
+  border:1px solid rgba(10,163,127,.18);
+}
 
-/* PRÓXIMAMENTE: 3 columnas, ítems iguales */
-.future-grid{
-  margin-top:14px;
+/* PRÓXIMAMENTE FULL WIDTH */
+.card.upcoming{
+  grid-column:1 / -1; /* ancho página */
+  background:rgba(255, 105, 180, .10); /* rosa muy suave */
+  border:1px solid rgba(255, 105, 180, .18);
+  min-height:520px;
+  position:relative;
+}
+
+/* CINTA DIAGONAL */
+.ribbon{
+  position:absolute;
+  top:18px;
+  right:-58px;
+  width:200px;
+  transform:rotate(45deg);
+  background:var(--rojo);
+  color:#fff;
+  text-align:center;
+  font-weight:900;
+  padding:10px 0;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* GRID DE CURSOS PRÓXIMAMENTE */
+.up-grid{
+  margin-top:12px;
   display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  gap:16px;
   align-items:stretch;
 }
-.future-item{
-  background:rgba(244,246,249,0.75);
-  border:1px solid rgba(11,61,145,.10);
+
+.up-item{
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(0,0,0,.08);
   border-radius:14px;
-  padding:12px;
+  padding:14px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  min-height:180px;
+  gap:10px;
+  height:100%;
 }
-.future-img{
-  width:100%;
-  height:92px;
-  border-radius:12px;
-  background:#e9eef8 center/cover no-repeat;
-  border:1px solid rgba(11,61,145,.10);
-  margin-bottom:10px;
-}
-.future-name{
+
+.up-title{
   font-weight:900;
   color:var(--azul);
-  font-size:14px;
-  line-height:1.25;
-  min-height:36px;
+  font-size:15px;
 }
-.future-meta{
-  margin-top:10px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+
+.up-desc{
+  font-size:13px;
+  line-height:1.45;
+  opacity:.95;
 }
-.tag{
-  font-size:12px;
-  font-weight:800;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#fff;
-  border:1px solid rgba(11,61,145,.12);
+
+.up-meta{
+  margin-top:auto;
+  font-size:12.5px;
+  font-weight:900;
+  color:#1a1a1a;
+  opacity:.9;
 }
-.tag.vir{border-color:rgba(10,163,127,.35);}
+
+.up-img{
+  width:100%;
+  height:90px;         /* más pequeño */
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  background:#e9eef6;
+}
+
+.up-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 /* FOOTER */
 footer{
@@ -314,11 +464,11 @@ footer{
   text-align:center;
   padding:26px 18px;
   margin-top:60px;
-  font-size:14px;
-  font-weight:700;
+  font-size:15px;
+  font-weight:800;
 }
 
-/* WHATSAPP */
+/* WHATSAPP FLOAT */
 .whatsapp-float{
   position:fixed;
   right:18px;
@@ -334,65 +484,26 @@ footer{
   font-size:26px;
   text-decoration:none;
   box-shadow:0 12px 26px rgba(0,0,0,.22);
-  z-index:9999;
 }
-.whatsapp-float:hover{transform:translateY(-2px);}
 
 /* RESPONSIVE */
-@media(max-width:980px){
-  .future-grid{grid-template-columns:repeat(2, minmax(0,1fr));}
-}
 @media(max-width:768px){
   header{padding:14px 16px}
-  header img{height:64px}
+  header img{height:110px}
   header .phone{font-size:20px}
-  .hero{padding:64px 18px}
+  .hero{padding:58px 18px}
   .hero h1{font-size:30px}
   .section{padding:0 16px}
   .location .wrap{padding:18px 16px}
-  .facade{width:120px;height:120px}
-  .course-img{height:175px;}
-}
-@media(max-width:520px){
-  .future-grid{grid-template-columns:1fr;}
+  .loc-right{align-items:flex-start}
 }
 </style>
 
 <script>
-function reservar(id){
+function toggleId(id){
   const el = document.getElementById(id);
   el.style.display = (el.style.display === "block") ? "none" : "block";
 }
-function togglePromo(id){
-  const el = document.getElementById(id);
-  el.style.display = (el.style.display === "block") ? "none" : "block";
-}
-
-/* CONTADOR SIMPLE (localStorage) */
-(function(){
-  const BASE = 5000;
-  const KEY = "afectt_visits";
-  const SESSION_KEY = "afectt_counted_this_session";
-
-  let visits = parseInt(localStorage.getItem(KEY), 10);
-  if (Number.isNaN(visits) || visits < BASE) visits = BASE;
-
-  // Evita sumar múltiples veces por refrescos en la misma sesión/pestaña
-  if (!sessionStorage.getItem(SESSION_KEY)) {
-    visits += 1;
-    localStorage.setItem(KEY, String(visits));
-    sessionStorage.setItem(SESSION_KEY, "1");
-  }
-
-  function formatAR(n){
-    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  document.addEventListener("DOMContentLoaded", function(){
-    const el = document.getElementById("visitCounter");
-    if (el) el.textContent = formatAR(visits);
-  });
-})();
 </script>
 </head>
 
@@ -405,318 +516,344 @@ function togglePromo(id){
   </div>
 
   <div class="phone">
-    <a href="https://wa.me/5493854747981" target="_blank" style="text-decoration:none; color:inherit;">
-      📞 3854747981
-    </a>
+    <a href="https://wa.me/5493854747981" target="_blank" rel="noopener">📞 3854747981</a>
   </div>
 </header>
 
 <section class="hero">
   <h1>Capacitación en Salud y Educación</h1>
   <p>19 años formando para el empleo con programas presenciales y enfoque práctico.</p>
+
+  <div class="seals">
+    <div class="seal">Certificación Universitaria</div>
+    <div class="seal">Docentes Especializados</div>
+  </div>
 </section>
 
 <div class="price-bar">Cuota mensual: $25.000</div>
+<div class="insc-bar">Inscripción: $10.000</div>
 
 <section class="location">
   <div class="wrap">
     <div class="loc-left">
-      <div class="facade" aria-label="Fachada del Instituto Afectt"></div>
-      <div class="loc-texts">
+      <a class="facade-btn" href="https://www.google.com/maps?q=Av%20San%20Pablo%20550%2C%20La%20Banda%2C%20Santiago%20del%20Estero" target="_blank" rel="noopener" aria-label="Ver ubicación"></a>
+
+      <div>
         <div class="loc-title">Dirección</div>
         <div class="loc-text">Av San Pablo 550, Barrio Santa Clara, La Banda</div>
-
-        <!-- CONTADOR (debajo de Dirección) -->
-        <div class="visits">👁️ Visitas: <span id="visitCounter">5.000</span></div>
-
-        <div class="loc-hours">Horario de atención: 9 a 11 hs y 18 a 20 hs</div>
+        <div class="loc-hours">Horario: 9 a 11 hs y 18 a 20 hs</div>
       </div>
     </div>
 
-    <a class="map-btn" href="https://www.google.com/maps?q=Av%20San%20Pablo%20550%2C%20La%20Banda%2C%20Santiago%20del%20Estero" target="_blank" rel="noopener">
-      Ver ubicación
-    </a>
+    <div class="loc-right">
+      <a class="map-btn" href="https://www.google.com/maps?q=Av%20San%20Pablo%20550%2C%20La%20Banda%2C%20Santiago%20del%20Estero" target="_blank" rel="noopener">
+        Ver ubicación
+      </a>
+
+      <!-- CONTADOR DE VISITAS (visual, base 5000) -->
+      <div class="counter">Visitas: +5.000</div>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <h2>Nuestras capacitaciones</h2>
 
-  <div class="badges">
-    <div class="badge">Certificacion Universitaria</div>
-    <div class="badge">Docentes Especializados</div>
-  </div>
-
   <div class="courses">
 
-    <!-- 1 -->
+    <!-- AGENTE SANITARIO -->
     <div class="card">
       <h3>Agente Sanitario</h3>
-      <img class="course-img" src="img/cursos/agente-sanitario.png" alt="Agente Sanitario">
+
+      <div class="course-img">
+        <img src="img/cursos/agente-sanitario.png" alt="Agente Sanitario">
+      </div>
 
       <p>Formación para prevención y promoción de la salud comunitaria.</p>
-      <div class="info">📅 Lunes | 🕒 18 a 21 hs</div>
 
       <div class="price">Cuota mensual: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('p1')">VER PROMO</div>
-      </div>
-      <div class="promo-box" id="p1">
-        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
-        Válida hasta el 20 de Febrero
+
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-agente')">VER PROMO</button>
       </div>
 
-      <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
-        <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="promo-panel" id="promo-agente">
+        <div class="promo-lines">
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.<br>
+          <span style="font-weight:900">Válida hasta el 20 de Febrero</span>
+        </div>
       </div>
 
-      <button onclick="reservar('r1')">Inscribirse</button>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+
+      <button class="btn" onclick="toggleId('r1')">Inscribirse</button>
       <div class="reserve" id="r1">
         <strong>Alias: AFECTT.IA</strong><br>
         Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
-        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
-    <!-- 2 -->
+    <!-- PRECEPTORES -->
     <div class="card">
-      <h3>Auxiliar en Farmacia</h3>
-      <img class="course-img" src="img/cursos/auxiliar-farmacias.png" alt="Auxiliar en Farmacia">
+      <h3>Formación de Preceptores</h3>
 
-      <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
-      <div class="info">📅 Martes | 🕒 18 a 21 hs</div>
+      <div class="course-img">
+        <img src="img/cursos/preceptores.png" alt="Formación de Preceptores">
+      </div>
+
+      <p>Preparación para el acompañamiento y la gestión educativa institucional.</p>
 
       <div class="price">Cuota mensual: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('p2')">VER PROMO</div>
-      </div>
-      <div class="promo-box" id="p2">
-        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
-        Válida hasta el 20 de Febrero
+
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-precept')">VER PROMO</button>
       </div>
 
-      <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
-        <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="promo-panel" id="promo-precept">
+        <div class="promo-lines">
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.<br>
+          <span style="font-weight:900">Válida hasta el 20 de Febrero</span>
+        </div>
       </div>
 
-      <button onclick="reservar('r2')">Inscribirse</button>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+
+      <button class="btn" onclick="toggleId('r2')">Inscribirse</button>
       <div class="reserve" id="r2">
         <strong>Alias: AFECTT.IA</strong><br>
         Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
-        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
-    <!-- 3 -->
+    <!-- AUXILIAR FARMACIA -->
     <div class="card">
-      <h3>Formación de Preceptores</h3>
-      <img class="course-img" src="img/cursos/preceptores.png" alt="Formación de Preceptores">
+      <h3>Auxiliar en Farmacia</h3>
 
-      <p>Preparación para el acompañamiento y la gestión educativa institucional.</p>
-      <div class="info">📅 Miércoles | 🕒 18 a 21 hs</div>
+      <div class="course-img">
+        <img src="img/cursos/auxiliar-farmacias.png" alt="Auxiliar en Farmacia">
+      </div>
+
+      <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
 
       <div class="price">Cuota mensual: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('p3')">VER PROMO</div>
-      </div>
-      <div class="promo-box" id="p3">
-        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
-        Válida hasta el 20 de Febrero
+
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-farm')">VER PROMO</button>
       </div>
 
-      <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
-        <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="promo-panel" id="promo-farm">
+        <div class="promo-lines">
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.<br>
+          <span style="font-weight:900">Válida hasta el 20 de Febrero</span>
+        </div>
       </div>
 
-      <button onclick="reservar('r3')">Inscribirse</button>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+
+      <button class="btn" onclick="toggleId('r3')">Inscribirse</button>
       <div class="reserve" id="r3">
         <strong>Alias: AFECTT.IA</strong><br>
         Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
-        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
-    <!-- 4 -->
+    <!-- ACOMPAÑANTE TERAPÉUTICO -->
     <div class="card">
       <h3>Acompañante Terapéutico</h3>
-      <img class="course-img" src="img/cursos/acompanante-terapeutico.png" alt="Acompañante Terapéutico">
+
+      <div class="course-img">
+        <img src="img/cursos/acompañante-terapeutico.png" alt="Acompañante Terapéutico">
+      </div>
 
       <p>Formación para el acompañamiento integral en contextos de salud y educación.</p>
-      <div class="info">📅 Jueves | 🕒 18 a 21 hs</div>
 
       <div class="price">Cuota mensual: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('p4')">VER PROMO</div>
-      </div>
-      <div class="promo-box" id="p4">
-        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
-        Válida hasta el 20 de Febrero
+
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-at')">VER PROMO</button>
       </div>
 
-      <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
-        <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="promo-panel" id="promo-at">
+        <div class="promo-lines">
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.<br>
+          <span style="font-weight:900">Válida hasta el 20 de Febrero</span>
+        </div>
       </div>
 
-      <button onclick="reservar('r4')">Inscribirse</button>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+
+      <button class="btn" onclick="toggleId('r4')">Inscribirse</button>
       <div class="reserve" id="r4">
         <strong>Alias: AFECTT.IA</strong><br>
         Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
-        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
-    <!-- 5 -->
+    <!-- EMERGENCIAS MÉDICAS -->
     <div class="card">
       <h3>Emergencias Médicas</h3>
-      <img class="course-img" src="img/cursos/emergencias-medicas.png" alt="Emergencias Médicas">
+
+      <div class="course-img">
+        <img src="img/cursos/emergencias-medicas.png" alt="Emergencias Médicas">
+      </div>
 
       <p>Capacitación para la atención inicial en situaciones de urgencia y emergencias.</p>
-      <div class="info">📅 Viernes | 🕒 18 a 21 hs</div>
 
       <div class="price">Cuota mensual: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('p5')">VER PROMO</div>
-      </div>
-      <div class="promo-box" id="p5">
-        Promo: Si pagas cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripcion!<br>
-        Válida hasta el 20 de Febrero
+
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-em')">VER PROMO</button>
       </div>
 
-      <div class="ia">
-        Formación presencial enriquecida con herramientas virtuales para el seguimiento, estudio y acompañamiento del alumno.
-        <div class="info" style="margin-top:10px">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="promo-panel" id="promo-em">
+        <div class="promo-lines">
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.<br>
+          <span style="font-weight:900">Válida hasta el 20 de Febrero</span>
+        </div>
       </div>
 
-      <button onclick="reservar('r5')">Inscribirse</button>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+
+      <button class="btn" onclick="toggleId('r5')">Inscribirse</button>
       <div class="reserve" id="r5">
         <strong>Alias: AFECTT.IA</strong><br>
         Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
-        <div class="info" style="margin-top:10px">Cuota mensual: $25.000 · Efectivo · Transferencia · Mercado Pago</div>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
-    <!-- Modalidad Virtual -->
-    <div class="card">
+    <!-- MODALIDAD VIRTUAL -->
+    <div class="card virtual">
       <h3>Modalidad Virtual</h3>
-      <img class="course-img" src="img/cursos/modalidad-virtual.png" alt="Modalidad Virtual">
+
+      <div class="course-img">
+        <img src="img/cursos/modalidad-virtual.png" alt="Modalidad Virtual">
+      </div>
 
       <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
 
-      <div class="price">Cuota Marzo: $25.000</div>
-      <div style="text-align:center">
-        <div class="promo-trigger" onclick="togglePromo('pv')">VER PROMO</div>
+      <div class="promo-wrap">
+        <button class="promo-btn" onclick="toggleId('promo-virtual')">VER PROMO</button>
       </div>
 
-      <div class="promo-box" id="pv">
-        <span class="promo-price">$20.000</span>
-        Sin gastos de inscripción<br>
-        Sin gastos de certificacion<br>
-        Material incluido<br>
-        Sin horarios fijos<br>
-        Válido hasta el 31 de Marzo
+      <div class="promo-panel" id="promo-virtual">
+        <div class="promo-price">$20.000</div>
+        <div class="promo-lines">
+          Sin gastos de inscripción<br>
+          Sin gastos de certificación<br>
+          Material incluido<br>
+          Sin horarios fijos<br>
+          <span style="font-weight:900">Válido hasta el 31 de Marzo</span>
+        </div>
       </div>
 
-      <div class="ia">
-        Modalidad virtual con acompañamiento y seguimiento académico durante todo el trayecto formativo.
-      </div>
+      <div class="ia">Modalidad virtual con acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
 
-      <button onclick="reservar('rv')">Inscribirse · Cuota Marzo: $25.000</button>
-      <div class="reserve" id="rv">
-        <strong>Alias: AFECTT.IA</strong><br>
-        Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar
-        <small>(enviar comprobante por wsp)</small>
+      <button class="btn" onclick="toggleId('virtual-insc')">Inscribirse</button>
+      <div class="reserve" id="virtual-insc" style="text-align:center;">
+        <strong style="font-size:16px;">Inscripción Gratuita hasta el 31 de Marzo</strong>
       </div>
     </div>
 
-    <!-- Próximamente (ancho completo) -->
-    <div class="card card-wide">
+    <!-- PRÓXIMAMENTE -->
+    <div class="card upcoming">
+      <div class="ribbon">NUEVOS</div>
       <h3>Próximamente</h3>
       <p>Nuevas capacitaciones en etapa de programación.</p>
 
-      <div class="future-grid">
-
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/peinados.png')"></div>
-          <div class="future-name">Peinados Profesionales</div>
-          <div class="future-meta"><span class="tag">6 meses</span><span class="tag">Presencial</span></div>
+      <div class="up-grid">
+        <!-- Ajustá los nombres de archivos si tus imágenes tienen otros nombres -->
+        <div class="up-item">
+          <div class="up-title">Peinados Profesionales</div>
+          <div class="up-img"><img src="img/cursos/peinados.png" alt="Peinados Profesionales"></div>
+          <div class="up-desc">Técnicas modernas de peinado, práctica guiada y preparación laboral.</div>
+          <div class="up-meta">Duración: 6 meses · Virtual: No</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/belleza.png')"></div>
-          <div class="future-name">Belleza Profesional</div>
-          <div class="future-meta"><span class="tag">6 meses</span><span class="tag">Presencial</span></div>
+        <div class="up-item">
+          <div class="up-title">Belleza Profesional</div>
+          <div class="up-img"><img src="img/cursos/belleza.png" alt="Belleza Profesional"></div>
+          <div class="up-desc">Rutinas, herramientas y técnicas estéticas con enfoque práctico.</div>
+          <div class="up-meta">Duración: 6 meses · Virtual: No</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/higiene.png')"></div>
-          <div class="future-name">Higiene y Seguridad Escolar</div>
-          <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Higiene y Seguridad Escolar</div>
+          <div class="up-img"><img src="img/cursos/higiene.png" alt="Higiene y Seguridad Escolar"></div>
+          <div class="up-desc">Protocolos, prevención y buenas prácticas para instituciones educativas.</div>
+          <div class="up-meta">Duración: 4 meses · Virtual: Sí</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/gym.png')"></div>
-          <div class="future-name">Asistente de Gym</div>
-          <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Asistente de Gym</div>
+          <div class="up-img"><img src="img/cursos/gym.png" alt="Asistente de Gym"></div>
+          <div class="up-desc">Acompañamiento en sala, nociones básicas de rutinas y cuidado.</div>
+          <div class="up-meta">Duración: 4 meses · Virtual: Sí</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/alimentacion.png')"></div>
-          <div class="future-name">Alimentación Familiar</div>
-          <div class="future-meta"><span class="tag">4 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Alimentación Familiar</div>
+          <div class="up-img"><img src="img/cursos/alimentacion.png" alt="Alimentación Familiar"></div>
+          <div class="up-desc">Hábitos, organización y criterios para una alimentación equilibrada.</div>
+          <div class="up-meta">Duración: 4 meses · Virtual: Sí</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/mente.png')"></div>
-          <div class="future-name">Mente Ágil</div>
-          <div class="future-meta"><span class="tag">6 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Mente Ágil</div>
+          <div class="up-img"><img src="img/cursos/mente.png" alt="Mente Ágil"></div>
+          <div class="up-desc">Memoria, lectura veloz, técnicas de estudio y oratoria.</div>
+          <div class="up-meta">Duración: 6 meses · Virtual: Sí</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/office.png')"></div>
-          <div class="future-name">Office Pro</div>
-          <div class="future-meta"><span class="tag">6 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Office Pro</div>
+          <div class="up-img"><img src="img/cursos/office.png" alt="Office Pro"></div>
+          <div class="up-desc">Herramientas clave para organizar, comunicar y trabajar con eficiencia.</div>
+          <div class="up-meta">Duración: 6 meses · Virtual: Sí</div>
         </div>
 
-        <div class="future-item">
-          <div class="future-img" style="background-image:url('img/cursos/negocios.png')"></div>
-          <div class="future-name">Negocios Digitales</div>
-          <div class="future-meta"><span class="tag">8 meses</span><span class="tag vir">Presencial + Virtual</span></div>
+        <div class="up-item">
+          <div class="up-title">Negocios Digitales</div>
+          <div class="up-img"><img src="img/cursos/negocios.png" alt="Negocios Digitales"></div>
+          <div class="up-desc">Estrategia, presencia online y fundamentos para emprender en digital.</div>
+          <div class="up-meta">Duración: 8 meses · Virtual: Sí</div>
         </div>
 
+        <div class="up-item">
+          <div class="up-title">Bloque extra (transversal): IA Aplicada</div>
+          <div class="up-img"><img src="img/cursos/ia.png" alt="IA Aplicada"></div>
+          <div class="up-desc">Bloque opcional para complementar cualquier curso y sumar certificación extra.</div>
+          <div class="up-meta">Opcional · Total con bloque: 12 meses · Certificación extra</div>
+        </div>
       </div>
 
-      <div class="ia" style="margin-top:16px">
-        Días, horarios y duración a definir. Cursos cortos y/o por bloques según capacitación.
+      <div class="ia" style="margin-top:18px;">
+        Días, horarios y duración final a definir. Cursos cortos y/o por bloques según capacitación.
       </div>
-
-      <button onclick="window.open('https://wa.me/5493854747981','_blank')">Consultar por WhatsApp</button>
     </div>
 
   </div>
 </section>
 
 <footer>
-  Instituto Afectt · 19 años formando para el empleo · 3854747981<br>
-  Más de 5.000 consultas recibidas
+  Instituto Afectt · 19 años formando para el empleo · 3854747981
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5493854747981" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">💬</a>
+<a class="whatsapp-float" href="https://wa.me/5493854747981" target="_blank" rel="noopener">💬</a>
 
 </body>
 </html>
-
