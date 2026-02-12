@@ -74,7 +74,7 @@ header .phone a{
     linear-gradient(rgba(11,61,145,.88),rgba(11,61,145,.88)),
     url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1920") center/cover;
   color:#fff;
-  padding:74px 40px;
+  padding:74px 40px 56px;
   text-align:center;
 }
 
@@ -103,12 +103,83 @@ header .phone a{
 }
 
 .seal{
-  background: rgba(0,0,0,0.20);  /* más contraste */
+  background: rgba(0,0,0,0.20);
   padding: 12px 18px;
   border-radius: 999px;
   font-weight: 900;
   letter-spacing: 1px;
   color: #ffffff;
+  cursor:pointer;
+  user-select:none;
+}
+
+/* PANEL SELLOS (desplegable en el hero) */
+.seal-panels{
+  max-width:1050px;
+  margin:16px auto 0;
+  padding:0 18px;
+}
+
+.seal-panel{
+  display:none;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:16px;
+  padding:16px 16px;
+  text-align:left;
+  backdrop-filter: blur(4px);
+}
+
+.seal-panel h3{
+  margin:0 0 8px;
+  font-size:18px;
+  font-weight:900;
+}
+
+.seal-panel p{
+  margin:0;
+  font-size:14.5px;
+  line-height:1.55;
+  opacity:.98;
+}
+
+.staff{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+.staff-card{
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.staff-card img{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.45);
+  flex-shrink:0;
+}
+
+.staff-name{
+  font-weight:900;
+  margin:0;
+  font-size:14.5px;
+}
+
+.staff-bio{
+  margin:2px 0 0;
+  font-size:13px;
+  line-height:1.35;
+  opacity:.95;
 }
 
 /* FRANJA PRECIO */
@@ -129,6 +200,61 @@ header .phone a{
   font-size:20px;
   font-weight:800;
   padding:16px;
+}
+
+/* QUIÉNES SOMOS (FULL WIDTH) */
+.about{
+  background:rgba(11,61,145,0.10);
+  border-top:1px solid rgba(0,0,0,.06);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.about .wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:34px 30px;
+  display:grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap:26px;
+  align-items:stretch;
+}
+
+.about-img{
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 14px 34px rgba(0,0,0,.12);
+  border:1px solid rgba(0,0,0,.06);
+  min-height:280px;
+}
+
+.about-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.about-text{
+  background:#fff;
+  border-radius:18px;
+  padding:22px 22px;
+  box-shadow:0 14px 34px rgba(0,0,0,.10);
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.about-title{
+  margin:0 0 10px;
+  color:var(--azul);
+  font-size:26px;
+  font-weight:900;
+}
+
+.about-text p{
+  margin:0;
+  font-size:14.8px;
+  line-height:1.65;
+  font-weight:600;
+  opacity:.98;
 }
 
 /* UBICACIÓN */
@@ -205,7 +331,6 @@ header .phone a{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
   background:rgba(11,61,145,.08);
   border:1px solid rgba(11,61,145,.18);
   padding:10px 12px;
@@ -220,7 +345,7 @@ header .phone a{
 
 .counter img{
   display:block;
-  height:22px;      /* tamaño prolijo */
+  height:22px;
   width:auto;
 }
 
@@ -495,11 +620,15 @@ footer{
 }
 
 /* RESPONSIVE */
+@media(max-width:900px){
+  .about .wrap{grid-template-columns:1fr; }
+  .about-img{min-height:220px;}
+}
 @media(max-width:768px){
   header{padding:14px 16px}
   header img{height:110px}
   header .phone{font-size:20px}
-  .hero{padding:58px 18px}
+  .hero{padding:58px 18px 44px}
   .hero h1{font-size:30px}
   .section{padding:0 16px}
   .location .wrap{padding:18px 16px}
@@ -511,6 +640,18 @@ footer{
 function toggleId(id){
   const el = document.getElementById(id);
   el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+
+function toggleSealPanel(id){
+  const a = document.getElementById('seal-cert');
+  const b = document.getElementById('seal-doc');
+  if(id === 'seal-cert'){
+    b.style.display = "none";
+    a.style.display = (a.style.display === "block") ? "none" : "block";
+  }else{
+    a.style.display = "none";
+    b.style.display = (b.style.display === "block") ? "none" : "block";
+  }
 }
 </script>
 </head>
@@ -530,16 +671,81 @@ function toggleId(id){
 
 <section class="hero">
   <h1>Capacitación en Salud y Educación</h1>
-  <p>19 años formando para el empleo con más de 10.000 egresados en todo el país.</p>
+  <p>19 años formando para el empleo con más de 7.500 egresados en todo el país.</p>
 
   <div class="seals">
-    <div class="seal">Certificación Universitaria</div>
-    <div class="seal">Docentes Especializados</div>
+    <div class="seal" onclick="toggleSealPanel('seal-cert')">Certificación Universitaria</div>
+    <div class="seal" onclick="toggleSealPanel('seal-doc')">Docentes Especializados</div>
+  </div>
+
+  <div class="seal-panels">
+    <div class="seal-panel" id="seal-cert">
+      <h3>Certificación Universitaria</h3>
+      <p>
+        Nuestra propuesta formativa se desarrolla bajo un marco institucional y académico que respalda la seriedad del trayecto,
+        la calidad de los contenidos y el enfoque orientado al trabajo. Al finalizar, se otorga certificación según el plan y la modalidad vigente.
+      </p>
+    </div>
+
+    <div class="seal-panel" id="seal-doc">
+      <h3>Docentes Especializados</h3>
+      <p>
+        Contamos con un equipo docente con experiencia y enfoque práctico, orientado al acompañamiento del alumno durante el cursado.
+      </p>
+
+      <div class="staff">
+        <!-- Podés reemplazar nombres/fotos/bios por los reales cuando los tengas -->
+        <div class="staff-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop" alt="Docente 1">
+          <div>
+            <p class="staff-name">Docente 1 · Área Salud</p>
+            <p class="staff-bio">Formación académica y experiencia en prácticas comunitarias y abordaje territorial.</p>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300&auto=format&fit=crop" alt="Docente 2">
+          <div>
+            <p class="staff-name">Docente 2 · Área Educación</p>
+            <p class="staff-bio">Gestión educativa, acompañamiento institucional y orientación pedagógica.</p>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=300&auto=format&fit=crop" alt="Docente 3">
+          <div>
+            <p class="staff-name">Docente 3 · Área Emergencias</p>
+            <p class="staff-bio">Experiencia en protocolos, primeros auxilios y abordaje inicial de urgencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="price-bar">Cuota mensual: $25.000</div>
 <div class="insc-bar">Inscripción: $10.000</div>
+
+<!-- QUIÉNES SOMOS (FULL WIDTH) -->
+<section class="about">
+  <div class="wrap">
+    <div class="about-img">
+      <img src="fachada.jpg" alt="Instituto Afectt - Fachada">
+    </div>
+
+    <div class="about-text">
+      <h2 class="about-title">Quiénes Somos</h2>
+      <p>
+        Somos una institución educativa con sede en la ciudad de La Banda, Santiago del Estero, con 19 años de trayectoria formando para el empleo y generando oportunidades reales de desarrollo personal y laboral.<br><br>
+        Desde nuestros inicios hemos trabajado con un compromiso claro: brindar formación seria, responsable y alineada a las necesidades concretas del mercado laboral. A lo largo de estos años hemos acompañado a miles de estudiantes en su proceso de capacitación, consolidándonos como un referente en el ámbito de la educación orientada a la práctica y al trabajo.<br><br>
+        Contamos con Personería Jurídica otorgada mediante Resolución N° 1357/07, con fecha 13 de julio de 2007, por el Ministerio de Gobierno del Superior Gobierno de la Provincia de Santiago del Estero, lo que respalda formalmente nuestra labor institucional y nuestro compromiso con la educación.<br><br>
+        Asimismo, hemos suscripto un Acta Acuerdo Marco N° 323/10 con la Facultad de Ciencias Exactas de la Universidad Nacional de Santiago del Estero (UNSE), con fecha 10 de diciembre de 2010, fortaleciendo así nuestro marco académico y la calidad de nuestras propuestas formativas.<br><br>
+        A lo largo del tiempo también hemos establecido múltiples acuerdos con municipalidades y comisiones municipales del interior de la provincia, llevando nuestra propuesta de formación a distintas comunidades donde hemos sido una solución tangible en la capacitación para el empleo. Nuestra presencia territorial nos permitió ampliar el alcance institucional y acompañar procesos de desarrollo local en diferentes puntos de la provincia y del país.<br><br>
+        Hoy continuamos creciendo con una visión clara: formar individuos preparados, responsables y comprometidos, contribuyendo activamente al desarrollo social y laboral de cada comunidad donde estamos presentes.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="location">
   <div class="wrap">
@@ -561,10 +767,9 @@ function toggleId(id){
       <!-- CONTADOR REAL (Hitwebcounter) -->
       <div class="counter" aria-label="Contador de visitas">
         <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener">
-          <img src="https://hitwebcounter.com/counter/counter.php?page=21476249&style=0005&nbdigits=6&type=page&initCount=1234" title="Free Tools" alt="Contador de visitas" border="0" />
+          <img src="https://hitwebcounter.com/counter/counter.php?page=21476249&style=0005&nbdigits=6&type=page&initCount=5000" title="Contador" alt="Contador de visitas" border="0" />
         </a>
       </div>
-
     </div>
   </div>
 </section>
@@ -574,37 +779,36 @@ function toggleId(id){
 
   <div class="courses">
 
-    <!-- AGENTE SANITARIO -->
-    <div class="card">
-      <h3>Agente Sanitario</h3>
+    <!-- (ENROQUE) MODALIDAD VIRTUAL PRIMERO -->
+    <div class="card virtual">
+      <h3>Modalidad Virtual</h3>
 
       <div class="course-img">
-        <img src="img/cursos/agente-sanitario.png" alt="Agente Sanitario">
+        <img src="img/cursos/modalidad-virtual.png" alt="Modalidad Virtual">
       </div>
 
-      <p>Formación para prevención y promoción de la salud comunitaria.</p>
-
-      <div class="price">Cuota mensual: $25.000</div>
+      <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
 
       <div class="promo-wrap">
-        <button class="promo-btn" onclick="toggleId('promo-agente')">VER PROMO</button>
+        <button class="promo-btn" onclick="toggleId('promo-virtual')">VER PROMO</button>
       </div>
 
-      <div class="promo-panel" id="promo-agente">
+      <div class="promo-panel" id="promo-virtual">
+        <div class="promo-price">$20.000</div>
         <div class="promo-lines">
-          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.
+          Sin gastos de inscripción<br>
+          Sin gastos de certificación<br>
+          Material incluido<br>
+          Sin horarios fijos<br>
+          <span style="font-weight:900">Válido hasta el 31 de Marzo</span>
         </div>
       </div>
 
-      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
-      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="ia">Modalidad virtual con acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
 
-      <button class="btn" onclick="toggleId('r1')">Inscribirse</button>
-      <div class="reserve" id="r1">
-        <strong>Alias: AFECTT.IA</strong><br>
-        Titular: German Terrera<br><br>
-        <strong>$10.000</strong> para reservar<br>
-        <span style="opacity:.9">Sin gastos de certificación</span>
+      <button class="btn" onclick="toggleId('virtual-insc')">Inscribirse</button>
+      <div class="reserve" id="virtual-insc" style="text-align:center;">
+        <strong style="font-size:16px;">Inscripción Gratuita hasta el 31 de Marzo</strong>
       </div>
     </div>
 
@@ -631,7 +835,7 @@ function toggleId(id){
       </div>
 
       <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
-      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="info">Cursada: Miércoles 18 a 21 hs · Duración: 10 meses · Inicio: primera semana de marzo</div>
 
       <button class="btn" onclick="toggleId('r2')">Inscribirse</button>
       <div class="reserve" id="r2">
@@ -647,7 +851,7 @@ function toggleId(id){
       <h3>Auxiliar en Farmacia</h3>
 
       <div class="course-img">
-        <img src="img/cursos/auxiliar-farmacias.png" alt="Auxiliar en Farmacia">
+        <img src="img/cursos/auxiliar-farmacia.png" alt="Auxiliar en Farmacia">
       </div>
 
       <p>Capacitación para la asistencia profesional en farmacias y droguerías.</p>
@@ -665,7 +869,7 @@ function toggleId(id){
       </div>
 
       <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
-      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="info">Cursada: Martes 18 a 21 hs · Duración: 10 meses · Inicio: primera semana de marzo</div>
 
       <button class="btn" onclick="toggleId('r3')">Inscribirse</button>
       <div class="reserve" id="r3">
@@ -699,7 +903,7 @@ function toggleId(id){
       </div>
 
       <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
-      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="info">Cursada: Jueves 18 a 21 hs · Duración: 10 meses · Inicio: primera semana de marzo</div>
 
       <button class="btn" onclick="toggleId('r4')">Inscribirse</button>
       <div class="reserve" id="r4">
@@ -733,7 +937,7 @@ function toggleId(id){
       </div>
 
       <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
-      <div class="info">Duración: 10 meses · Inicio: primera semana de marzo</div>
+      <div class="info">Cursada: Viernes 18 a 21 hs · Duración: 10 meses · Inicio: primera semana de marzo</div>
 
       <button class="btn" onclick="toggleId('r5')">Inscribirse</button>
       <div class="reserve" id="r5">
@@ -744,36 +948,37 @@ function toggleId(id){
       </div>
     </div>
 
-    <!-- MODALIDAD VIRTUAL -->
-    <div class="card virtual">
-      <h3>Modalidad Virtual</h3>
+    <!-- (ENROQUE) AGENTE SANITARIO VA A LA POSICIÓN DONDE ESTABA VIRTUAL -->
+    <div class="card">
+      <h3>Agente Sanitario</h3>
 
       <div class="course-img">
-        <img src="img/cursos/modalidad-virtual.png" alt="Modalidad Virtual">
+        <img src="img/cursos/agente-sanitario.png" alt="Agente Sanitario">
       </div>
 
-      <p>Dossier académico y contenidos alineados a la propuesta formativa, con acompañamiento y seguimiento virtual.</p>
+      <p>Formación para prevención y promoción de la salud comunitaria.</p>
+
+      <div class="price">Cuota mensual: $25.000</div>
 
       <div class="promo-wrap">
-        <button class="promo-btn" onclick="toggleId('promo-virtual')">VER PROMO</button>
+        <button class="promo-btn" onclick="toggleId('promo-agente')">VER PROMO</button>
       </div>
 
-      <div class="promo-panel" id="promo-virtual">
-        <div class="promo-price">$20.000</div>
+      <div class="promo-panel" id="promo-agente">
         <div class="promo-lines">
-          Sin gastos de inscripción<br>
-          Sin gastos de certificación<br>
-          Material incluido<br>
-          Sin horarios fijos<br>
-          <span style="font-weight:900">Válido hasta el 31 de Marzo</span>
+          Si pagás cuota de Marzo hasta el 20 de Febrero, se bonifica la inscripción.
         </div>
       </div>
 
-      <div class="ia">Modalidad virtual con acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="ia">Formación presencial enriquecida con apoyo virtual para acompañamiento y seguimiento académico durante todo el trayecto formativo.</div>
+      <div class="info">Cursada: Lunes 18 a 21 hs · Duración: 10 meses · Inicio: primera semana de marzo</div>
 
-      <button class="btn" onclick="toggleId('virtual-insc')">Inscribirse</button>
-      <div class="reserve" id="virtual-insc" style="text-align:center;">
-        <strong style="font-size:16px;">Inscripción Gratuita hasta el 31 de Marzo</strong>
+      <button class="btn" onclick="toggleId('r1')">Inscribirse</button>
+      <div class="reserve" id="r1">
+        <strong>Alias: AFECTT.IA</strong><br>
+        Titular: German Terrera<br><br>
+        <strong>$10.000</strong> para reservar<br>
+        <span style="opacity:.9">Sin gastos de certificación</span>
       </div>
     </div>
 
@@ -864,4 +1069,3 @@ function toggleId(id){
 
 </body>
 </html>
-
