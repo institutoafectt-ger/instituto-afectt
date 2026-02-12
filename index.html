@@ -728,25 +728,35 @@ function toggleSealPanel(id){
 
 <!-- QUIÉNES SOMOS (FULL WIDTH) -->
 <section class="about">
-  <div class="wrap">
-    <div class="about-img">
-      <img src="fachada.jpg" alt="Instituto Afectt - Fachada">
-    </div>
+  <div class="about-toggle">
+    <button class="about-btn" onclick="toggleId('about-panel')">QUIÉNES SOMOS</button>
+  </div>
 
-    <div class="about-text">
-      <h2 class="about-title">Quiénes Somos</h2>
-      <p>
-        Somos una institución educativa con sede en la ciudad de La Banda, Santiago del Estero, con 19 años de trayectoria formando para el empleo y generando oportunidades reales de desarrollo personal y laboral.<br><br>
-        Desde nuestros inicios hemos trabajado con un compromiso claro: brindar formación seria, responsable y alineada a las necesidades concretas del mercado laboral. A lo largo de estos años hemos acompañado a miles de estudiantes en su proceso de capacitación, consolidándonos como un referente en el ámbito de la educación orientada a la práctica y al trabajo.<br><br>
-        Contamos con Personería Jurídica otorgada mediante Resolución N° 1357/07, con fecha 13 de julio de 2007, por el Ministerio de Gobierno del Superior Gobierno de la Provincia de Santiago del Estero, lo que respalda formalmente nuestra labor institucional y nuestro compromiso con la educación.<br><br>
-        Asimismo, hemos suscripto un Acta Acuerdo Marco N° 323/10 con la Facultad de Ciencias Exactas de la Universidad Nacional de Santiago del Estero (UNSE), con fecha 10 de diciembre de 2010, fortaleciendo así nuestro marco académico y la calidad de nuestras propuestas formativas.<br><br>
-        A lo largo del tiempo también hemos establecido múltiples acuerdos con municipalidades y comisiones municipales del interior de la provincia, llevando nuestra propuesta de formación a distintas comunidades donde hemos sido una solución tangible en la capacitación para el empleo. Nuestra presencia territorial nos permitió ampliar el alcance institucional y acompañar procesos de desarrollo local en diferentes puntos de la provincia y del país.<br><br>
-        Hoy continuamos creciendo con una visión clara: formar individuos preparados, responsables y comprometidos, contribuyendo activamente al desarrollo social y laboral de cada comunidad donde estamos presentes.
-      </p>
+  <div class="about-panel" id="about-panel">
+    <div class="wrap">
+      <div class="about-img">
+        <img src="fachada.jpg" alt="Instituto Afectt - Fachada">
+      </div>
+
+      <div class="about-text">
+        <h2 class="about-title">Quiénes Somos</h2>
+        <p>
+          Somos una institución educativa con sede en la ciudad de La Banda, Santiago del Estero, con 19 años de trayectoria formando para el empleo y generando oportunidades reales.<br><br>
+
+          Desde nuestros inicios hemos trabajado con un compromiso claro: brindar formación seria, responsable y alineada a las necesidades concretas del mercado laboral.<br><br>
+
+          Contamos con Personería Jurídica otorgada por el Ministerio de Gobierno del Superior Gobierno de la Provincia de Santiago del Estero, mediante Resolución N° 1357/07, con fecha 13 de julio de 2007.<br><br>
+
+          Asimismo, hemos suscripto un Acta Acuerdo Marco N° 323/10 con la Facultad de Ciencias Exactas de la Universidad Nacional de Santiago del Estero (UNSE), con fecha 10 de diciembre de 2010.<br><br>
+
+          A lo largo del tiempo también hemos establecido múltiples acuerdos con municipalidades y comisiones municipales del interior de la provincia, donde hemos sido una solución tangible en la formación para el empleo, llevando nuestra propuesta a cada lugar.<br><br>
+
+          Hoy continuamos creciendo con una visión clara: formar individuos preparados, responsables y comprometidos, contribuyendo activamente al desarrollo social y laboral.
+        </p>
+      </div>
     </div>
   </div>
 </section>
-
 <section class="location">
   <div class="wrap">
     <div class="loc-left">
@@ -1069,3 +1079,4 @@ function toggleSealPanel(id){
 
 </body>
 </html>
+
