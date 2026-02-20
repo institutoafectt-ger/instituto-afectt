@@ -215,12 +215,37 @@ header img{
   box-shadow:0 12px 28px rgba(10,163,127,.4);
 }
 
+/* BOTÓN QUIÉNES SOMOS */
+.about-btn-wrap{
+  text-align:center;
+  margin:0 0 30px;
+}
+
+.about-toggle-btn{
+  background:var(--azul);
+  color:#fff;
+  border:none;
+  padding:14px 32px;
+  font-size:16px;
+  font-weight:900;
+  border-radius:10px;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 8px 20px rgba(11,61,145,.3);
+}
+
+.about-toggle-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(11,61,145,.4);
+}
+
 /* QUIÉNES SOMOS (FULL WIDTH) */
 .about{
   background:rgba(11,61,145,0.10);
   border-top:1px solid rgba(0,0,0,.06);
   border-bottom:1px solid rgba(0,0,0,.06);
   display:none;
+  margin-bottom:30px;
 }
 
 .about .wrap{
@@ -740,37 +765,6 @@ function toggleSealPanel(id){
   </a>
 </div>
 
-<!-- QUIÉNES SOMOS (FULL WIDTH) -->
-<section class="about">
-  <div class="about-toggle">
-    <button class="about-btn" onclick="toggleId('about-panel')">QUIÉNES SOMOS</button>
-  </div>
-
-  <div class="about-panel" id="about-panel">
-    <div class="wrap">
-      <div class="about-img">
-        <img src="fachada.jpg" alt="Instituto Afectt - Fachada">
-      </div>
-
-      <div class="about-text">
-        <h2 class="about-title">Quiénes Somos</h2>
-        <p>
-          Somos una institución educativa con sede en la ciudad de La Banda, Santiago del Estero, con 19 años de trayectoria formando para el empleo y generando oportunidades reales.<br><br>
-
-          Desde nuestros inicios hemos trabajado con un compromiso claro: brindar formación seria, responsable y alineada a las necesidades concretas del mercado laboral.<br><br>
-
-          Contamos con Personería Jurídica otorgada por el Ministerio de Gobierno del Superior Gobierno de la Provincia de Santiago del Estero, mediante Resolución N° 1357/07, con fecha 13 de julio de 2007.<br><br>
-
-          Asimismo, hemos suscripto un Acta Acuerdo Marco N° 323/10 con la Facultad de Ciencias Exactas de la Universidad Nacional de Santiago del Estero (UNSE), con fecha 10 de diciembre de 2010.<br><br>
-
-          A lo largo del tiempo también hemos establecido múltiples acuerdos con municipalidades y comisiones municipales del interior de la provincia, donde hemos sido una solución tangible en la formación para el empleo, llevando nuestra propuesta a cada lugar.<br><br>
-
-          Hoy continuamos creciendo con una visión clara: formar individuos preparados, responsables y comprometidos, contribuyendo activamente al desarrollo social y laboral.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="location">
   <div class="wrap">
     <div class="loc-left">
@@ -800,6 +794,36 @@ function toggleSealPanel(id){
 
 <section class="section">
   <h2>Nuestras capacitaciones</h2>
+
+  <div class="about-btn-wrap">
+    <button class="about-toggle-btn" onclick="toggleId('about-section')">Quiénes Somos</button>
+  </div>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="about" id="about-section">
+    <div class="wrap">
+      <div class="about-img">
+        <img src="fachada.jpg" alt="Instituto Afectt - Fachada">
+      </div>
+
+      <div class="about-text">
+        <h2 class="about-title">Quiénes Somos</h2>
+        <p>
+          Somos una institución educativa con sede en la ciudad de La Banda, Santiago del Estero, con 19 años de trayectoria formando para el empleo y generando oportunidades reales.<br><br>
+
+          Desde nuestros inicios hemos trabajado con un compromiso claro: brindar formación seria, responsable y alineada a las necesidades concretas del mercado laboral.<br><br>
+
+          Contamos con Personería Jurídica otorgada por el Ministerio de Gobierno del Superior Gobierno de la Provincia de Santiago del Estero, mediante Resolución N° 1357/07, con fecha 13 de julio de 2007.<br><br>
+
+          Asimismo, hemos suscripto un Acta Acuerdo Marco N° 323/10 con la Facultad de Ciencias Exactas de la Universidad Nacional de Santiago del Estero (UNSE), con fecha 10 de diciembre de 2010.<br><br>
+
+          A lo largo del tiempo también hemos establecido múltiples acuerdos con municipalidades y comisiones municipales del interior de la provincia, donde hemos sido una solución tangible en la formación para el empleo, llevando nuestra propuesta a cada lugar.<br><br>
+
+          Hoy continuamos creciendo con una visión clara: formar individuos preparados, responsables y comprometidos, contribuyendo activamente al desarrollo social y laboral.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <div class="courses">
 
@@ -1093,4 +1117,3 @@ function toggleSealPanel(id){
 
 </body>
 </html>
-
